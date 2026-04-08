@@ -1,4 +1,4 @@
-# EasyRep
+# Velora
 
 ## Get started
 
