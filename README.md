@@ -2,7 +2,7 @@
 
 > [!WARNING]
 > Sylvero is currently under active development. Features may be incomplete,
-> changed, or missing. Use with caution.
+> changed, or missing.
 
 Sylvero is a minimalistic customer and parts registration application designed for repair shops and service technicians. The app streamlines daily workflows by combining customer registration, parts ordering, and task management into one simple interface.
 ## The Problem
@@ -23,32 +23,3 @@ team overview.
 
 ## Who Is It For?
 Sylvero is built for repair shops, service technicians, and small businesses that handle customer repairs and parts ordering on a daily basis.
-
-## Get Started
-
-1. **Install dependencies**
-```bash
-   npm install
-```
-
-2. **Set up environment variables**
-   
-   Create a `.env` file in the root of the project and add the following:
-   `EXPO_PUBLIC_TRELLO_API_KEY=your_api_key`
-   `EXPO_PUBLIC_TRELLO_TOKEN=your_token`
-   `EXPO_PUBLIC_TRELLO_LIST_ID_ARBEID=your_list_id`
-   `EXPO_PUBLIC_SUPABASE_URL=supabase_url`
-   `EXPO_PUBLIC_SUPABASE_KEY=your_supabase_api_key`
-
-
-3. **Start the app**
-```bash
-   npx expo start
-```
-
-Once started, you can open the app in:
-
-- [Development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go)
