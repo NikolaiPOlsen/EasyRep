@@ -20,7 +20,7 @@ export default function RegisterCustomerScreen() {
                     <TextInput placeholder='Navn' style={[styles.inputBox, { borderColor: themeColors.border, color: themeColors.text }]} value={customername} onChangeText={setCustomerName} />
                     <TextInput placeholder='Telefonnummer' style={[styles.inputBox, { borderColor: themeColors.border, color: themeColors.text }]} value={phonenumber} onChangeText={setPhonenumber} keyboardType="numeric" />
                     <TextInput placeholder='Telefon modell' style={[styles.inputBox, { borderColor: themeColors.border, color: themeColors.text }]} value={phoneModel} onChangeText={setPhoneModel} />
-                    <AppButton label='Legg til deler' onPress={() => router.push('/add-parts')} />
+                    <AppButton label='Legg til deler' onPress={() => router.push('/screens/add-parts')} />
                 </ThemedView>
             </KeyboardAvoidingView>
         </SafeAreaView>
