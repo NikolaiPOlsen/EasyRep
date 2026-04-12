@@ -4,7 +4,7 @@ import { OperationResult } from './types';
 export const mobilepartsSupplier: PartsSupplier = {
     fetchParts: async (query: string) => {
         const key = process.env.EXPO_PUBLIC_MOBILEPARTS_KEY;
-        const response = await fetch(`/dealers/parts/search?SearchText=${query}`, {
+        const response = await fetch(`https://services.2service.nl/dealers/parts/search?SearchText=${query}`, {
             method: 'GET',
             headers: { "Content-Type": "application/json" },
         });
@@ -12,7 +12,7 @@ export const mobilepartsSupplier: PartsSupplier = {
     },
     authenticate: async () => {
         const key = process.env.EXPO_PUBLIC_MOBILEPARTS_KEY;
-        const response = await fetch(`/dealers/authenticate?UserName=${process.env.EXPO_PUBLIC_MOBILEPARTS_UNAME}&Password=${process.env.EXPO_PUBLIC_MOBILEPARTS_PASS}`, {
+        const response = await fetch(`https://services.2service.nl/dealers/authenticate?UserName=${process.env.EXPO_PUBLIC_MOBILEPARTS_UNAME}&Password=${process.env.EXPO_PUBLIC_MOBILEPARTS_PASS}`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
         });
