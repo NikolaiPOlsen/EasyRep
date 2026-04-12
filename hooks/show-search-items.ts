@@ -19,15 +19,6 @@ export const useShowSearchItems = () => {
             throw error;
         }
     };
-    const fetchPartPhotos = async (partId: string) => {
-        try {
-            const partPhotos = await activeSupplier.fetchPartPhotos?.(partId);
-            return partPhotos;
-        } catch (error) {
-            console.error("Error fetching part photos:", error);
-            throw error;
-        }
-    };
     const addToCart = async (partId: string, quantity: number) => {
         try {
             await activeSupplier.addToCart?.(partId, quantity);
@@ -37,5 +28,5 @@ export const useShowSearchItems = () => {
         }
     };
 
-    return { fetchParts, fetchPartDetails, fetchPartPhotos, addToCart };
+    return { fetchParts, addToCart };
 };
