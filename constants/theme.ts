@@ -7,6 +7,7 @@ export const Colors = {
   light: {
     text: '#11181C',
     background: '#F8F8FF',
+    card: '#DFDFE5',
     border: '#11181C',
     tint: tintColorLight,
     icon: '#687076',
@@ -18,6 +19,7 @@ export const Colors = {
   dark: {
     text: '#ECEDEE',
     background: '#1F262A',
+    card: '#1D2327',
     border: '#ECEDEE',
     tint: tintColorDark,
     icon: '#9BA1A6',
