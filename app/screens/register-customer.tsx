@@ -4,13 +4,15 @@ import { Colors } from '@/constants/theme';
 import { useCreateCard } from '@/hooks/use-create-card';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Dimensions, KeyboardAvoidingView, Platform, StyleSheet, TextInput, useColorScheme } from 'react-native';
+import { useWindowDimensions, KeyboardAvoidingView, Platform, StyleSheet, TextInput, useColorScheme, View, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function RegisterCustomerScreen() {
     const colorScheme = useColorScheme();
     const themeColors = Colors[colorScheme ?? 'light'];
     const { handleCreateCard } = useCreateCard();
+    const { width, height } = useWindowDimensions();
+    const inputHeight = Math.round(height * 0.06);
     const TRELLO_LISTID_ARBEID = process.env.EXPO_PUBLIC_TRELLO_LIST_ID_ARBEID || '';
     const [customername, setCustomerName] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
@@ -29,43 +31,100 @@ export default function RegisterCustomerScreen() {
     };
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.background }}>
-            <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={100}>
+        <SafeAreaView style={{ flex: 1, flexDirection: 'row', backgroundColor: themeColors.background }}>
+            <KeyboardAvoidingView 
+                style={{ flex: 1 }} 
+                behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+                keyboardVerticalOffset={0}>
+
                 <ThemedView style={styles.container}>
-                    <TextInput placeholder='Navn' style={[styles.inputBox, { borderColor: themeColors.border, color: themeColors.text }]} value={customername} onChangeText={setCustomerName} />
-                    <TextInput placeholder='Telefon' style={[styles.inputBox, { borderColor: themeColors.border, color: themeColors.text }]} value={phonenumber} onChangeText={setPhonenumber} keyboardType="numeric" />
-                    <TextInput multiline placeholder='Beskrivelse' style={[styles.inputBoxMultiline, { borderColor: themeColors.border, color: themeColors.text }]} value={desc} onChangeText={setDesc} />
-                    <TextInput placeholder='Pris' style={[styles.inputBox, { borderColor: themeColors.border, color: themeColors.text }]} value={pris} onChangeText={setPris} keyboardType="numeric" />
-                    <AppButton label='Registrer kunde' onPress={() => handlePress(TRELLO_LISTID_ARBEID)} />
+                    <View style={styles.wrapper}>
+
+                        <Text style={[styles.sectionTitle, { color: themeColors.text }]}>Ny kunde</Text>
+                        <Text style={[styles.sectionSubtitle, { color: themeColors.icon }]}>Fyll inn informasjon om kunden</Text>
+
+                        <Text style={[styles.inputLabel, { color: themeColors.text }]}>Navn</Text>
+                            <TextInput 
+                            placeholder='Navn'
+                            placeholderTextColor={themeColors.icon}
+                            style={[styles.inputBox, { backgroundColor: themeColors.card, color: themeColors.text, height: inputHeight }]} 
+                            value={customername} 
+                            onChangeText={setCustomerName} />
+
+                        <Text style={[styles.inputLabel, { color: themeColors.text }]}>Telefonnummer</Text>
+                            <TextInput 
+                            placeholder='Telefon'
+                            placeholderTextColor={themeColors.icon}
+                            style={[styles.inputBox, { backgroundColor: themeColors.card, color: themeColors.text, height: inputHeight }]} 
+                            value={phonenumber} 
+                            onChangeText={setPhonenumber} 
+                            keyboardType="numeric" />
+
+                        <Text style={[styles.inputLabel, { color: themeColors.text }]}>Beskrivelse</Text>
+                            <TextInput 
+                            multiline 
+                            placeholder='Beskrivelse' 
+                            placeholderTextColor={themeColors.icon}
+                            style={[styles.inputBoxMultiline, { backgroundColor: themeColors.card, color: themeColors.text, height: inputHeight }]} 
+                            value={desc} 
+                            onChangeText={setDesc} />
+
+                        <Text style={[styles.inputLabel, { color: themeColors.text }]}>Pris</Text>
+                            <TextInput 
+                            placeholder='Pris' 
+                            placeholderTextColor={themeColors.icon}
+                            style={[styles.inputBox, { backgroundColor: themeColors.card, color: themeColors.text, height: inputHeight }]} 
+                            value={pris} 
+                            onChangeText={setPris}/>
+
+                        <AppButton label='Registrer kunde' onPress={() => handlePress(TRELLO_LISTID_ARBEID)} />
+
+                    </View>
+
                 </ThemedView>
             </KeyboardAvoidingView>
         </SafeAreaView>
     )
 };
 
-const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
+    },
+    wrapper: {
+        width: '100%',
+        maxWidth: 420,
+        paddingHorizontal: 20,
+    },
+    sectionTitle: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginBottom: 4,
+    },
+    sectionSubtitle: {
+        fontSize: 15,
+        marginBottom: 28,
     },
     inputBox: {
-        width: width * 0.6,
-        height: height * 0.06,
-        borderWidth: 1,
-        marginBottom: 10,
-        paddingHorizontal: 10,
-        borderRadius: 20,
-        maxWidth: 400,
+        marginBottom: 18,
+        paddingHorizontal: 14,
+        borderRadius: 12,
+        fontSize: 16,
+        maxWidth: 380,
     },
     inputBoxMultiline: {
-        width: width * 0.6,
-        height: height * 0.15,
-        borderWidth: 1,
-        marginBottom: 10,
-        paddingHorizontal: 10,
-        borderRadius: 20,
-        maxWidth: 400,
+        marginBottom: 18,
+        padding: 14,
+        borderRadius: 12,
+        fontSize: 16,
+        maxWidth: 380,
     },
+    inputLabel: {
+        fontSize: 13,
+        fontWeight: '600',
+        marginBottom: 6,
+        marginLeft: 2,
+    }
 });
