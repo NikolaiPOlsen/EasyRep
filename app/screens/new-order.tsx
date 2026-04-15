@@ -20,17 +20,24 @@ import { useCreateCard } from '@/hooks/use-create-card';
 import { router } from 'expo-router';
 
 export default function RegisterCustomerScreen() {
+    // Color theme
     const colorScheme = useColorScheme();
     const themeColors = Colors[colorScheme ?? 'light'];
-    const [isLoading, setIsLoading] = useState(false);
+
     const insets = useSafeAreaInsets();
+
+    // Dimension screen
     const { width, height } = useWindowDimensions();
     const isPortrait = height > width;
+
+    // Input height
     const inputHeight = Math.round(height * 0.06);
+
     const [customername, setCustomerName] = useState('');
     const [phonenumber, setPhonenumber] = useState('');
     const [phoneModel, setPhoneModel] = useState('');
     const [price, setPrice] = useState('');
+
     const { fetchParts, addToCart } = useShowSearchItems();
     const [parts, setParts] = useState<Device[]>([]);
     const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -285,7 +292,6 @@ export default function RegisterCustomerScreen() {
                             showsVerticalScrollIndicator={false}
                             contentContainerStyle={{ paddingBottom: 20 }}
                             renderItem={renderPartCard}
-                            onLayout={() => setIsLoading(true)} 
                         />
                         
                     )}
