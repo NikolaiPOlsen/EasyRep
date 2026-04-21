@@ -26,6 +26,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }}/>
           <Stack.Screen name="screens/register-customer" options={{ headerBackTitle: 'Tilbake', title: 'Registrer kunde', headerTintColor: themeColors.text, headerStyle: { backgroundColor: themeColors.background } }}/>
           <Stack.Screen name="screens/new-order" options={{ headerBackTitle: 'Tilbake', title: 'Ny bestilling', headerTintColor: themeColors.text, headerStyle: { backgroundColor: themeColors.background } }}/>
+          <Stack.Screen name="screens/user-profile" options={{ headerBackTitle: 'Tilbake', title: 'Profil', headerTintColor: themeColors.text, headerStyle: { backgroundColor: themeColors.background } }}/>
         </Stack>
         <RootNavigation/>
     </AuthProvider>
