@@ -1,7 +1,7 @@
 import AppButton, { AddToCartButton, SearchButton } from '@/src/components/ui/app-button';
 import { Colors } from '@/src/constants/theme';
 import { useShowSearchItems } from '@/src/hooks/show-search-items';
-import { Device } from '@/src/services/Suppliers/types';
+import { Device } from '@/supabase/functions/fetch-parts/types';
 import { useState } from 'react';
 import {
     FlatList,
@@ -19,7 +19,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useCreateCard } from '@/src/hooks/use-create-card';
 import { router } from 'expo-router';
 
-export default function RegisterCustomerScreen() {
+export default function NewOrderScreen() {
     // Color theme
     const colorScheme = useColorScheme();
     const themeColors = Colors[colorScheme ?? 'light'];
@@ -321,7 +321,7 @@ const styles = StyleSheet.create({
         marginBottom: 4,
     },
     sectionSubtitle: {
-        fontSize: 15,
+        fontSize: 16,
         marginBottom: 28,
     },
     inputLabel: {

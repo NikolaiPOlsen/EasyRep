@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         marginBottom: 4,
     },
     sectionSubtitle: {
-        fontSize: 15,
+        fontSize: 16,
         marginBottom: 28,
     },
     inputBox: {
